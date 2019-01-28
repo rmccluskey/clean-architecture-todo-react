@@ -41,6 +41,14 @@ class App extends Component<Props, State> {
     });
   }
 
+  async removeTodo(evt: any, todo: Todo.Todo) {
+    evt.stopPropagation();
+    let todoList = await todoInteractor.removeTodo(this.state.todoList, todo);
+    this.setState({
+      todoList
+    });
+  }
+
   async toggleTodo(todo: Todo.Todo) {
     let todoList = await todoInteractor.toggleTodo(this.state.todoList, todo);
     this.setState({
@@ -59,6 +67,7 @@ class App extends Component<Props, State> {
       <span>{`[${Todo.isDone(todo) ? "x" : ""}] `}</span>
       <span>{Todo.title(todo)}</span>
       <span> - {Todo.age(todo)}</span>
+      <button onClick={(evt) => this.removeTodo(evt, todo)}>X</button>
     </div>): <></>;
 
     return (
