@@ -35,10 +35,14 @@ class App extends Component<Props, State> {
   }
 
   async addTodo() {
-    let todoList = await todoInteractor.addTodo(this.state.todoList, this.state.todoTitle);
-    this.setState({
-      todoList
-    });
+    try {
+      let todoList = await todoInteractor.addTodo(this.state.todoList, this.state.todoTitle);
+      this.setState({
+        todoList
+      });
+    } catch (e) {
+      alert(e);
+    }
   }
 
   async removeTodo(evt: any, todo: Todo.Todo) {
