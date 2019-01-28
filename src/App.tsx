@@ -76,7 +76,8 @@ class App extends Component<Props, State> {
 
     return (
       <div className="App">
-        <input value={this.state.todoTitle} onChange={this.updateTitle}></input>
+        <div>I'm an React TodoList</div>
+        <input value={this.state.todoTitle} onChange={this.updateTitle} placeholder="title"></input>
         <button onClick={this.addTodo}>Add TODO</button>
         {todoList}        
       </div>
